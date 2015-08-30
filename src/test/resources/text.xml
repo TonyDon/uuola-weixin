@@ -1,0 +1,8 @@
+<xml>
+    <ToUserName><![CDATA[helloworld]]></ToUserName>
+    <FromUserName><![CDATA[tangxiaodong]]></FromUserName>
+    <CreateTime>1440946189</CreateTime>
+    <MsgType><![CDATA[text]]></MsgType>
+    <Content><![CDATA[asdfasdf&amp;&lt;&gt;sdf]]></Content>
+    <MsgId>1440946189046</MsgId>
+</xml>
