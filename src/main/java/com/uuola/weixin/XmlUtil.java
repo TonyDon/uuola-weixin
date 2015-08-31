@@ -7,10 +7,10 @@
 package com.uuola.weixin;
 
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.io.Serializable;
 import java.io.StringReader;
 import java.io.StringWriter;
+import java.io.Writer;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
@@ -48,7 +48,8 @@ public abstract class XmlUtil {
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             marshaller.setProperty(Marshaller.JAXB_ENCODING, encoding);
             StringWriter writer = new StringWriter();
-            marshaller.marshal(xmlBean, writer);
+            XMLSerializer serializer = getXMLSerializer(writer);
+            marshaller.marshal(xmlBean, serializer.asContentHandler());
             result = writer.toString();
         } catch (Exception e) {
             log.error("toXml()", e);
@@ -94,7 +95,7 @@ public abstract class XmlUtil {
         return t;  
     } 
     
-    private static XMLSerializer getXMLSerializer(OutputStream output) {
+    private static XMLSerializer getXMLSerializer(Writer writer) {
         // configure an OutputFormat to handle CDATA
         OutputFormat of = new OutputFormat();
 
@@ -103,9 +104,20 @@ public abstract class XmlUtil {
         // seems to be an implementation detail of the xerces code.
         // When processing xml that doesn't use namespaces, simply omit the
         // namespace prefix as shown in the third CDataElement below.
-        of.setCDataElements(new String[] { "ns1^foo", //
-                "ns2^bar", //
-                "^baz" }); //
+        of.setCDataElements(new String[] {
+                "^ToUserName",
+                "^FromUserName",
+                "^MsgType",
+                "^Content",
+                "^PicUrl",
+                "^MediaId",
+                "^Format",
+                "^ThumbMediaId",
+                "^Label",
+                "^Title",
+                "^Description",
+                "^Url"
+                });
 
         // set any other options you'd like
         of.setPreserveSpace(true);
@@ -113,7 +125,7 @@ public abstract class XmlUtil {
 
         // create the serializer
         XMLSerializer serializer = new XMLSerializer(of);
-        serializer.setOutputByteStream(output);
+        serializer.setOutputCharStream(writer);
 
         return serializer;
     }
