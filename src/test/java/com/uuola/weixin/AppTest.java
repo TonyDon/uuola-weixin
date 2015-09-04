@@ -40,7 +40,7 @@ public class AppTest {
         response.close();
     }
     
-    @Test
+    //@Test
     public void test_xml_1(){
         TextMsg msg = new TextMsg();
         msg.setFromUserName("tangxiaodong");
@@ -49,15 +49,25 @@ public class AppTest {
         msg.setMsgId(System.currentTimeMillis());
         msg.setMsgType("text");
         msg.setCreateTime(DateUtil.getCurrTime()/1000);
-        String xml = XmlUtil.toXml(msg, "utf-8");
+        long t1 = System.currentTimeMillis();
+        String xml = null;
+        for(int k=0; k<1000; k++){
+            xml = XmlUtil.toXml(msg, "utf-8");
+        }
+        System.out.println(System.currentTimeMillis()-t1);
         System.out.println(xml);
     }
     
-    @Test
+    //@Test
     public void test_xml_2(){
         URL url = this.getClass().getClassLoader().getResource("text.xml");
         String xml = FileUtil.readStringByFile(url.getFile(), "utf-8");
-        TextMsg msg = XmlUtil.toBean(xml, TextMsg.class);
+        long t1 = System.currentTimeMillis();
+        TextMsg msg = null;
+        for(int k=0; k<1000; k++){
+            msg = XmlUtil.toBean(xml, TextMsg.class);
+        }
+        System.out.println(System.currentTimeMillis()-t1);
         System.out.println(JsonUtil.toJSONString(msg));
     }
     
