@@ -31,9 +31,6 @@ public class LinkMsg extends BaseMsg {
     @XmlElement(name ="Url")
     private String url;
     
-    
-    @XmlElement(name ="MsgId")
-    private Long msgId;
 
 
     
@@ -72,14 +69,4 @@ public class LinkMsg extends BaseMsg {
     }
 
 
-    
-    public Long getMsgId() {
-        return msgId;
-    }
-
-
-    
-    public void setMsgId(Long msgId) {
-        this.msgId = msgId;
-    }
 }

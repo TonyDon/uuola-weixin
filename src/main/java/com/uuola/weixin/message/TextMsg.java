@@ -24,9 +24,6 @@ public class TextMsg extends BaseMsg {
 
     @XmlElement(name ="Content")
     private String content;
-    
-    @XmlElement(name ="MsgId")
-    private Long msgId;
 
     
     public String getContent() {
@@ -36,18 +33,6 @@ public class TextMsg extends BaseMsg {
     
     public void setContent(String content) {
         this.content = content;
-    }
-
-
-    
-    public Long getMsgId() {
-        return msgId;
-    }
-
-
-    
-    public void setMsgId(Long msgId) {
-        this.msgId = msgId;
     }
 
 }

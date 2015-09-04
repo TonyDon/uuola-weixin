@@ -36,6 +36,9 @@ public abstract class BaseMsg implements Serializable {
     
     @XmlElement(name ="MsgType")
     private String msgType;
+    
+    @XmlElement(name ="MsgId")
+    private Long msgId;
 
     
     public String getToUserName() {
@@ -77,6 +80,18 @@ public abstract class BaseMsg implements Serializable {
     
     public void setMsgType(String msgType) {
         this.msgType = msgType;
+    }
+
+
+    
+    public Long getMsgId() {
+        return msgId;
+    }
+
+
+    
+    public void setMsgId(Long msgId) {
+        this.msgId = msgId;
     }
     
 }

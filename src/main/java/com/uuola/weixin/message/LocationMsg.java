@@ -34,8 +34,6 @@ public class LocationMsg extends BaseMsg {
     @XmlElement(name ="Label")
     private String label;
 
-    @XmlElement(name ="MsgId")
-    private Long msgId;
 
     
     public Double getLocationX() {
@@ -78,12 +76,4 @@ public class LocationMsg extends BaseMsg {
     }
 
     
-    public Long getMsgId() {
-        return msgId;
-    }
-
-    
-    public void setMsgId(Long msgId) {
-        this.msgId = msgId;
-    }
 }

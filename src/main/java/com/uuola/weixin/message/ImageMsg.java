@@ -27,9 +27,7 @@ public class ImageMsg extends BaseMsg {
     
     @XmlElement(name ="MediaId")
     private String mediaId;
-    
-    @XmlElement(name ="MsgId")
-    private Long msgId;
+
 
     
     public String getPicUrl() {
@@ -52,12 +50,4 @@ public class ImageMsg extends BaseMsg {
     }
 
     
-    public Long getMsgId() {
-        return msgId;
-    }
-
-    
-    public void setMsgId(Long msgId) {
-        this.msgId = msgId;
-    }
 }
