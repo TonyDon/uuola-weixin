@@ -3,6 +3,7 @@ package com.uuola.weixin;
 import java.io.IOException;
 import java.net.URL;
 
+import org.apache.commons.codec.digest.Md5Crypt;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -69,6 +70,11 @@ public class AppTest {
         }
         System.out.println(System.currentTimeMillis()-t1);
         System.out.println(JsonUtil.toJSONString(msg));
+    }
+    
+    //@Test
+    public void test_3(){
+       System.out.println(Md5Crypt.md5Crypt("abc908".getBytes(), "$1$dh1gjfkg"));
     }
     
     @After
