@@ -3,6 +3,7 @@ package com.uuola.weixin;
 import java.io.IOException;
 import java.net.URL;
 
+import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.digest.Md5Crypt;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -15,6 +16,8 @@ import org.junit.Test;
 
 import com.uuola.commons.DateUtil;
 import com.uuola.commons.JsonUtil;
+import com.uuola.commons.coder.Md5;
+import com.uuola.commons.coder.MyBase64;
 import com.uuola.commons.file.FileUtil;
 import com.uuola.commons.http.HttpClientUtil;
 import com.uuola.weixin.message.TextMsg;
@@ -72,9 +75,12 @@ public class AppTest {
         System.out.println(JsonUtil.toJSONString(msg));
     }
     
-    //@Test
+    @Test
     public void test_3(){
        System.out.println(Md5Crypt.md5Crypt("abc908".getBytes(), "$1$dh1gjfkg"));
+       String md5 = Md5.encode("123");
+       System.out.println(Base64.encodeBase64String(md5.getBytes()));
+       System.out.println(MyBase64.encode(""+System.currentTimeMillis()));
     }
     
     @After
